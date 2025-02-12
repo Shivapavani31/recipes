@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+          margin: 0;
+          font-family: Arial, sans-serif;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: orange;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            font-size: 2.5rem;
+            font-family: cursive;
+            /* font-weight: bold; */
+            color: #333;
+        }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #007BFF;
+        }
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 10;
+            width: max-content;
+        }
+        .dropdown a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .dropdown a:hover {
+            background-color: #f0f0f0;
+        }
+        .has-dropdown {
+            position: relative;
+        }
+        .has-dropdown:hover .dropdown {
+            display: block;
+        }
+        .search-login {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .search-box {
+            width: 250px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        .login-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 7px 15px;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+        footer {
+      display: flex;
+      flex-wrap: wrap; /* Ensures responsiveness */
+      justify-content: space-between;
+      background-color: orange; /* Light background color */
+      padding: 20px;
+      border-top: 2px solid #ddd;
+    }
+
+    footer h4 {
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    footer p, pre {
+      font-size: 0.9rem;
+      color: white;
+      margin: 5px 0;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul a {
+      text-decoration: none;
+      color: white;
+      font-size: 0.9rem;
+      margin: 5px 0;
+      display: block; /* Ensures links stack vertically */
+    }
+
+    ul a:hover {
+      text-decoration: underline;
+    }
+
+    footer a i {
+      font-size: 1.2rem;
+      color: #555;
+      margin-right: 10px;
+      transition: color 0.3s ease;
+    }
+
+    footer a i:hover {
+      color: #007bff;
+    }
+
+    footer hr {
+      width: 100%;
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 20px 0;
+    }
+
+    #f2 {
+      text-align: center;
+      font-size: 0.8rem;
+      color: white;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin: 10px;
+    }
+    .footer-section:last-child {
+      text-align: right;
+    }
+    #img1{
+        width: 40%;
+        height: 60vh;
+        margin-left: 60vh;
+        margin-top: 15vh;
+        border-radius: 2vh;
+    }
+    #name{
+        font-size: 2rem;
+        font-family: cursive;
+        padding-left: 20vh;
+        padding-top: 40vh;
+    }
+    .container h1{
+        font-size: 3rem;
+        font-family: cursive;
+        margin-left: 70vh;
+    }
+    .container img{
+        width: 50%;
+        height: 400px;
+        margin-left: 50vh;
+        border-radius: 10vh;
+    }
+    .ingredients h2{
+        font-size: 1.5rem;
+        font-family: cursive;
+        margin-left: 10vh;
+    }
+    .ingredients p{
+        font-size: 1.5rem;
+        font-family: cursive;
+        margin-left: 10vh;
+        color: black;
+    }
+    iframe{
+        width: 100vh;
+        height: 70vh;
+        margin-left: 25vw;
+    }
+    </style>
+<body>
+    <nav>
+        <div class="logo">Recipes</div>
+        <div class="nav-links">
+            <a href="{% url 'ourrecipe1:home' %}">Home</a>
+            <div class="has-dropdown">
+                <a href="{% url 'ourrecipe1:veg' %}">Veg</a>
+                <div class="dropdown">
+                    <a href="{% url 'veg:soups' %}">Soups</a>
+                    <a href="{% url 'veg:curries' %}">Curries</a>
+                    <a href="{% url 'veg:quickandeasy' %}">Quick & easy</a>
+                    <a href="{% url 'veg:biryani' %}">Biryani</a>
+                    <a href="{% url 'veg:fastfood' %}">Fast food</a>
+                    <a href="{% url 'veg:staters' %}">Staters</a>
+                </div>
+            </div>
+            <div class="has-dropdown">
+                <a href="{% url 'ourrecipe1:nonveg' %}">Non-Veg</a>
+                <div class="dropdown">
+                    <a href="#">Chicken</a>
+                    <a href="#">Beef</a>
+                    <a href="#">Pork</a>
+                    <a href="#">Sea food</a>
+                    <a href="#">Meat</a>
+                </div>
+            </div>
+            <div class="has-dropdown">
+                <a href="{% url 'ourrecipe1:drinks' %}">Drinks</a>
+                <div class="dropdown">
+                    <a href="#">Milkshaks</a>
+                    <a href="#">Mojitos</a>
+                    <a href="#">Juice</a>
+                    <a href="#">Soft drinks</a>
+                </div>
+            </div>
+            <div class="has-dropdown">
+                <a href="{% url 'ourrecipe1:snacks' %}">Snacks</a>
+                <div class="dropdown">
+                    <a href="#">Traditional snacks</a>
+                    <a href="#">School snacks</a>
+                    <a href="#">Time pass</a>
+                </div>
+            </div>
+            <div class="has-dropdown">
+                <a href="{% url 'ourrecipe1:dessert' %}">Desserts</a>
+                <div class="dropdown">
+                    <a href="#">Chocolate</a>
+                    <a href="#">Cake</a>
+                    <a href="#">Fruit</a>
+                    <a href="#">Caramel</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+            <div class="has-dropdown">
+                <a href="{% url 'ourrecipe1:tiffins' %}">Tiffins</a>
+                <div class="dropdown">
+                    <a href="#">Idly</a>
+                    <a href="#">Upma</a>
+                    <a href="#">Puri</a>
+                    <a href="#">Dosa</a>
+                    <a href="#">Poha</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="search-login">
+            <!-- <input type="text" class="search-box" placeholder="Search..."> -->
+            <button class="login-btn">Login</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1>{{ showquickandeasy.name }}</h1><br><br>
+        <img src="{{ showquickandeasy.image.url }}" alt="{{ showquickandeasy.name }}"><br>
+        <div class="ingredients">
+            <h2>Ingredients:</h2>
+            <p>{{ showquickandeasy.ingredients }}</p><br>
+        </div>
+        <div class="ingredients">
+            <h2>Preparation Recipe:</h2>
+            <p>{{ showquickandeasy.recipe }}</p><br>
+            <iframe src="{{ showquickandeasy.video|cut:'watch?v=' }}" frameborder="0" allowfullscreen></iframe>
+
+        </div>
+    </div>
+    
+<br>
+    <footer>
+        <div class="footer-section">
+        <h4>About Us</h4>
+        <p>We provide the best collection of recipes from all
+             around the world</p>
+        </div>
+        <div class="footer-section">
+        <ul>
+            <h4>Quick links</h4>
+            <a href="{% url 'ourrecipe1:veg' %}" class="quick"><li>Veg</li></a>
+            <a href="{% url 'ourrecipe1:nonveg' %}" class="quick"><li>Non-veg</li></a>
+            <a href="{% url 'ourrecipe1:tiffins' %}" class="quick"><li>Tiffins</li></a>
+            <a href="{% url 'ourrecipe1:snacks' %}" class="quick"><li>Snacks</li></a>
+            <a href="{% url 'ourrecipe1:drinks' %}" class="quick"><li>Drinks</li></a>
+            <a href="{% url 'ourrecipe1:dessert' %}" class="quick"><li>Desserts</li></a>
+        </ul>
+        </div>
+        <div class="footer-section">
+        <h4>Contact</h4>
+        <pre>Email:
+<a href="#">shivapavanikandra@gmail.com</a>
+Phone: 9014277638
+        </pre>
+        </div>
+        <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <hr>
+        <p id="f2">&copy; 2021 Recipes. All rights reserved.</p>
+    </footer>
+</body>
+</html>
